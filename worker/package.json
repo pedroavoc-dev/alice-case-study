@@ -1,0 +1,10 @@
+{
+  "name": "alice-edge-gateway",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker that verifies Meta webhook signatures and queues messages in front of n8n.",
+  "scripts": {
+    "check": "node --check src/index.js",
+    "test": "node test/signature.test.js"
+  }
+}

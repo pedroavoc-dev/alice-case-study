@@ -1,0 +1,33 @@
+# Copy to wrangler.toml and fill in the placeholders. Do NOT commit the real file.
+name = "my-gateway"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+
+# Non-secret configuration
+[vars]
+PHONE_NUMBER_ID = "<YOUR_WHATSAPP_PHONE_NUMBER_ID>"
+GRAPH_API_VERSION = "v21.0"
+N8N_TIMEOUT_MS = "6000"
+REPLAY_MAX_ATTEMPTS = "30"
+
+# Queue used while n8n is down
+[[kv_namespaces]]
+binding = "ALICE_QUEUE"
+id = "<YOUR_KV_NAMESPACE_ID>"
+
+# Replay the queue every 2 minutes
+[triggers]
+crons = ["*/2 * * * *"]
+
+# Turn logs on. A gateway that fails silently is the same problem as no gateway.
+[observability]
+enabled = true
+
+# Secrets are NEVER written here. Set each one with:
+#   npx wrangler secret put META_APP_SECRET
+#   npx wrangler secret put VERIFY_TOKEN
+#   npx wrangler secret put WHATSAPP_TOKEN
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN
+#   npx wrangler secret put TELEGRAM_CHAT_ID
+#   npx wrangler secret put N8N_WEBHOOK_URL
+#   npx wrangler secret put GATEWAY_SHARED_SECRET   (optional)

@@ -1,0 +1,22 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+.dev.vars
+wrangler.toml
+.wrangler/
+
+# Data — never commit real conversations, maps or databases
+*.db
+*.sqlite
+mapas/
+maps/
+*conversa*.txt
+*conversation*.txt
+*-anon.*
+
+# Tooling
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
